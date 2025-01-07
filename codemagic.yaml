@@ -5,7 +5,7 @@ workflows:
     max_build_duration: 120
     environment:
       ios_signing:
-        distribution_type: ad-hoc
+        distribution_type: ad_hoc
       vars:
         APP_ID: DeepBrisca
       flutter: stable
