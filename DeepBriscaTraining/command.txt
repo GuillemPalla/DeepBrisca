@@ -1,0 +1,3 @@
+
+Convert onnx to tf:
+	onnx2tf -i exported_models/dqn_greedy_model-600_000-800KMem-1e_4LR-128BS-NNv2.onnx -o exported_models/dqn_greedy_model-600_000-800KMem-1e_4LR-128BS-NNv2
