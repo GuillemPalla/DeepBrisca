@@ -1,6 +1,7 @@
 workflows:
   ios-build:
     name: iOS Build Workflow
+    working_directory: DeepBriscaApp
     max_build_duration: 120
     environment:
       flutter: stable
