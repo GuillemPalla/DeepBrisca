@@ -1,53 +1,30 @@
 workflows:
-  ios-workflow:
-    name: iOS Workflow
-    instance_type: mac_mini_m2
-    max_build_duration: 120
-    environment:
-      ios_signing:
-        distribution_type: ad_hoc
-        bundle_identifier: com.example.deepbrisca
-      vars:
-        APP_ID: DeepBrisca
-      flutter: stable
-      xcode: latest
-      cocoapods: default
-    scripts:
-      - name: Update Cocoapods
-        script: |
-          sudo gem install cocoapods -v '1.12.0'
-          pod repo update
-      - name: Set up code signing settings on Xcode project
-        script: |
-          xcode-project use-profiles
-      - name: Get Flutter packages
-        script: |
-          flutter packages pub get
-      - name: Install Pods
-        script: cd ios && pod install
-      - name: Create export options plist
-        script: |
-          echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-          <!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
-          <plist version=\"1.0\">
-          <dict>
-            <key>method</key>
-            <string>ad-hoc</string> # Or app-store, enterprise, development
-            <key>signingStyle</key>
-            <string>automatic</string> # Or manual
-            <key>provisioningProfiles</key>
-            <dict>
-                <key>your.bundle.identifier</key>
-                <string>Your Provisioning Profile Name</string>
-            </dict>
-          </dict>
-          </plist>" > /tmp/export_options.plist
-      - name: Flutter build ipa and automatic versioning
-        script: |
-          flutter build ipa --release \
-            --build-name=1.0.0 \
-            --build-number=$(date +%Y%m%d%H%M%S) \
-            --export-options-plist=/Users/builder/export_options.plist
-    artifacts:
-      - build/ios/ipa/*.ipa
-      - /tmp/xcodebuild_logs/*.log
+    sample-workflow:
+        name: Codemagic Sample Workflow
+        max_build_duration: 120
+        instance_type: mac_mini_m2
+        environment:
+            flutter: stable
+          scripts:
+            - name: Set up code signing settings on Xcode project
+              script: | 
+                xcode-project use-profiles
+             - name: Update Cocoapods
+              script: |
+                sudo gem install cocoapods -v '1.12.0'
+                pod repo update
+            - name: Get Flutter packages
+              script: | 
+                flutter pub get
+            - name: Install pods
+              script: | 
+                find . -name "Podfile" -execdir pod install \;
+            - name: Flutter build ipa
+              script: | 
+                flutter build ipa --release \
+                  --build-name=1.0.0 \
+                  --export-options-plist=/Users/builder/export_options.plist
+          artifacts:
+            - build/ios/ipa/*.ipa
+            - /tmp/xcodebuild_logs/*.log
+            - flutter_drive.log
