@@ -15,7 +15,7 @@ workflows:
       - name: Install Pods
         script: cd ios && pod install
       - name: Flutter build ios
-        script: flutter build ios --release --no-codesign
+        script: flutter build ios --release --no-codesign --archive
     artifacts:
       - build/ios/archive/*.xcarchive # Archive for future reference
       - build/ios/ipa/*.ipa # IPA will be generated during archiving
