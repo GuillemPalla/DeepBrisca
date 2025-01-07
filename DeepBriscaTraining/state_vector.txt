@@ -1,0 +1,15 @@
+0: my_points
+1: other_points
+2: len(self.deck.cards)
+3: turn_my_player
+4: self.briscola.value
+5: self.briscola.seed
+6: table.card.value
+7: table.card.seed
+8: hand.card.value 1
+9: hand.card.seed 1
+10: hand.card.value 2
+11: hand.card.seed 2
+12: hand.card.value 3
+13: hand.card.seed 3
+14-53: binary vector discarded cards

@@ -1,0 +1,78 @@
+# PyCharm
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# Logs and temporary files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# System files
+*.swp
+*.swo
+
+# Flutter/Dart
+# Generated files
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+pubspec.lock
+
+# iOS
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/Generated.xcconfig
+ios/Flutter/App.framework
+ios/Flutter/engine/
+ios/Flutter/app.flx
+ios/Flutter/app.dill
+ios/Flutter/flutter_assets/
+*.mode1v3
+*.mode2v3
+*.pbxuser
+*.xcuserstate
+
+# Android
+android/.gradle/
+android/.idea/
+android/local.properties
+android/app/proguard-rules.pro
+android/app/*.keystore
+*.jks
+
+# Web
+web/manifest.json
+
+# Build output
+build/
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Coverage reports
+coverage/
+
+# Flutter and Dart-specific temporary files
+.macos/
