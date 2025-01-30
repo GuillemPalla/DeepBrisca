@@ -24,9 +24,14 @@ class ModelPlayer(BasePlayer):
         self.model.eval()  # Set to evaluation mode
 
     def choose_card(self, table, briscola, state):
+        device = torch.device(
+            "cuda" if torch.cuda.is_available() else
+            "mps" if torch.backends.mps.is_available() else
+            "cpu"
+        )
         # Process the state into a format your model understands
-        state_tensor = torch.tensor(state, dtype=torch.float32).unsqueeze(0)  # Add batch dimension
+        state_tensor = torch.tensor(state, dtype=torch.float32, device=device).unsqueeze(0)  # Add batch dimension
         with torch.no_grad():
-            action_logits = self.model(state_tensor)
+            action_logits = self.model(state_tensor).to(device)
         action = torch.argmax(action_logits).item()  # Choose the action with the highest score
         return action

@@ -4,8 +4,6 @@ import gymnasium as gym
 from gymnasium.envs.registration import register
 import math
 import random
-import matplotlib
-import matplotlib.pyplot as plt
 from collections import namedtuple, deque
 from itertools import count
 
@@ -16,7 +14,6 @@ import torch.nn.functional as F
 
 from pytorch_classes.DQN2 import DQN
 from pytorch_classes.ReplayMemory import ReplayMemory
-import torch_directml
 
 def save_model(policy_net, optimizer, model_path):
     torch.save({
@@ -81,6 +78,8 @@ def optimize_model():
     torch.nn.utils.clip_grad_value_(policy_net.parameters(), 100)
     optimizer.step()
 
+print(torch.cuda.is_available())
+
 device = torch.device(
     "cuda" if torch.cuda.is_available() else
     "mps" if torch.backends.mps.is_available() else
@@ -116,7 +115,7 @@ resume_training = True
 MODEL_LOAD_PATH = "models3/dqn_greedy_model-550_000-800KMem-1e_4LR-128BS-NNv2.pth"
 
 num_episodes = 50_000
-MODEL_SAVE_PATH = f"models3/dqn_greedy_model-600_000-800KMem-1e_4LR-128BS-NNv2.pth"
+MODEL_SAVE_PATH = f"test.pth"
 
 # Register custom environments
 register(
