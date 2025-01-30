@@ -29,8 +29,8 @@ class HomeScreen extends StatelessWidget {
                         TextSpan(
                           text: 'v1',
                           style: TextStyle(
-                            fontSize: 25, // Smaller font size for "v1"
-                            color: Colors.grey, // Optional: Different color
+                            fontSize: 25,
+                            color: Colors.grey,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

@@ -206,7 +206,7 @@ class _BriscaGamePageState extends State<BriscaGamePage> with TickerProviderStat
           backgroundColor: Colors.white,
           elevation: 0.0,
           title: const Text(
-            'BRISCA GAME',
+            'DeepBrisca',
             style: TextStyle(color: Colors.black),
           ),
         ),
@@ -242,12 +242,23 @@ class _BriscaGamePageState extends State<BriscaGamePage> with TickerProviderStat
           ),
           title: Row(
             children: [
-              const Text(
-                'BRISCA GAME',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
+              RichText(
+                text: const TextSpan(
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(text: 'DeepBrisca', style: TextStyle(fontSize: 23)),
+                    TextSpan(
+                      text: 'v1',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(width: 10.0),
